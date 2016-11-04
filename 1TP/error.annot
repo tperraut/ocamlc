@@ -1,0 +1,587 @@
+"error.ml" 11 135 139 "error.ml" 11 135 149
+type(
+  Format.formatter -> string -> Lexing.position * Lexing.position -> unit
+)
+ident(
+  def report_loc "error.ml" 20 441 441 "error.ml" 1 0 -1
+)
+"error.ml" 11 135 150 "error.ml" 11 135 153
+type(
+  Format.formatter
+)
+ident(
+  def fmt "error.ml" 11 135 154 "error.ml" 18 363 439
+)
+"error.ml" 11 135 154 "error.ml" 11 135 158
+type(
+  string
+)
+ident(
+  def file "error.ml" 11 135 159 "error.ml" 18 363 439
+)
+"error.ml" 11 135 160 "error.ml" 11 135 161
+type(
+  Lexing.position
+)
+ident(
+  def b "error.ml" 12 167 169 "error.ml" 18 363 439
+)
+"error.ml" 11 135 162 "error.ml" 11 135 163
+type(
+  Lexing.position
+)
+ident(
+  def e "error.ml" 12 167 169 "error.ml" 18 363 439
+)
+"error.ml" 11 135 159 "error.ml" 11 135 164
+type(
+  Lexing.position * Lexing.position
+)
+"error.ml" 12 167 172 "error.ml" 12 167 173
+type(
+  Lexing.position
+)
+ident(
+  int_ref b "error.ml" 11 135 160 "error.ml" 11 135 161
+)
+"error.ml" 12 167 174 "error.ml" 12 167 175
+type(
+  Lexing.position -> Lexing.position -> bool
+)
+ident(
+  ext_ref Pervasives.( = )
+)
+"error.ml" 12 167 176 "error.ml" 12 167 185
+type(
+  Lexing.position
+)
+ident(
+  ext_ref Lexing.dummy_pos
+)
+"error.ml" 12 167 172 "error.ml" 12 167 185
+type(
+  bool
+)
+"error.ml" 12 167 186 "error.ml" 12 167 188
+type(
+  bool -> bool -> bool
+)
+ident(
+  ext_ref Pervasives.( || )
+)
+"error.ml" 12 167 189 "error.ml" 12 167 190
+type(
+  Lexing.position
+)
+ident(
+  int_ref e "error.ml" 11 135 162 "error.ml" 11 135 163
+)
+"error.ml" 12 167 191 "error.ml" 12 167 192
+type(
+  Lexing.position -> Lexing.position -> bool
+)
+ident(
+  ext_ref Pervasives.( = )
+)
+"error.ml" 12 167 193 "error.ml" 12 167 202
+type(
+  Lexing.position
+)
+ident(
+  ext_ref Lexing.dummy_pos
+)
+"error.ml" 12 167 189 "error.ml" 12 167 202
+type(
+  bool
+)
+"error.ml" 12 167 172 "error.ml" 12 167 202
+type(
+  bool
+)
+"error.ml" 13 208 210 "error.ml" 13 208 217
+type(
+  Format.formatter ->
+  (string -> unit, Format.formatter, unit) format -> string -> unit
+)
+ident(
+  ext_ref Format.fprintf
+)
+"error.ml" 13 208 218 "error.ml" 13 208 221
+type(
+  Format.formatter
+)
+ident(
+  int_ref fmt "error.ml" 11 135 150 "error.ml" 11 135 153
+)
+"error.ml" 13 208 222 "error.ml" 13 208 244
+type(
+  (string -> unit, Format.formatter, unit) format
+)
+"error.ml" 13 208 245 "error.ml" 13 208 249
+type(
+  string
+)
+ident(
+  int_ref file "error.ml" 11 135 154 "error.ml" 11 135 158
+)
+"error.ml" 13 208 210 "error.ml" 13 208 249
+call(
+  tail
+)
+type(
+  unit
+)
+"error.ml" 15 257 263 "error.ml" 15 257 264
+type(
+  int
+)
+ident(
+  def l "error.ml" 16 281 283 "error.ml" 18 363 439
+)
+"error.ml" 15 257 267 "error.ml" 15 257 268
+type(
+  Lexing.position
+)
+ident(
+  int_ref b "error.ml" 11 135 160 "error.ml" 11 135 161
+)
+"error.ml" 15 257 267 "error.ml" 15 257 277
+type(
+  int
+)
+"error.ml" 16 281 287 "error.ml" 16 281 289
+type(
+  int
+)
+ident(
+  def fc "error.ml" 17 322 324 "error.ml" 18 363 439
+)
+"error.ml" 16 281 292 "error.ml" 16 281 293
+type(
+  Lexing.position
+)
+ident(
+  int_ref b "error.ml" 11 135 160 "error.ml" 11 135 161
+)
+"error.ml" 16 281 292 "error.ml" 16 281 302
+type(
+  int
+)
+"error.ml" 16 281 303 "error.ml" 16 281 304
+type(
+  int -> int -> int
+)
+ident(
+  ext_ref Pervasives.( - )
+)
+"error.ml" 16 281 305 "error.ml" 16 281 306
+type(
+  Lexing.position
+)
+ident(
+  int_ref b "error.ml" 11 135 160 "error.ml" 11 135 161
+)
+"error.ml" 16 281 305 "error.ml" 16 281 314
+type(
+  int
+)
+"error.ml" 16 281 292 "error.ml" 16 281 314
+type(
+  int
+)
+"error.ml" 16 281 315 "error.ml" 16 281 316
+type(
+  int -> int -> int
+)
+ident(
+  ext_ref Pervasives.( + )
+)
+"error.ml" 16 281 317 "error.ml" 16 281 318
+type(
+  int
+)
+"error.ml" 16 281 292 "error.ml" 16 281 318
+type(
+  int
+)
+"error.ml" 17 322 328 "error.ml" 17 322 330
+type(
+  int
+)
+ident(
+  def lc "error.ml" 18 363 365 "error.ml" 18 363 439
+)
+"error.ml" 17 322 333 "error.ml" 17 322 334
+type(
+  Lexing.position
+)
+ident(
+  int_ref e "error.ml" 11 135 162 "error.ml" 11 135 163
+)
+"error.ml" 17 322 333 "error.ml" 17 322 343
+type(
+  int
+)
+"error.ml" 17 322 344 "error.ml" 17 322 345
+type(
+  int -> int -> int
+)
+ident(
+  ext_ref Pervasives.( - )
+)
+"error.ml" 17 322 346 "error.ml" 17 322 347
+type(
+  Lexing.position
+)
+ident(
+  int_ref b "error.ml" 11 135 160 "error.ml" 11 135 161
+)
+"error.ml" 17 322 346 "error.ml" 17 322 355
+type(
+  int
+)
+"error.ml" 17 322 333 "error.ml" 17 322 355
+type(
+  int
+)
+"error.ml" 17 322 356 "error.ml" 17 322 357
+type(
+  int -> int -> int
+)
+ident(
+  ext_ref Pervasives.( + )
+)
+"error.ml" 17 322 358 "error.ml" 17 322 359
+type(
+  int
+)
+"error.ml" 17 322 333 "error.ml" 17 322 359
+type(
+  int
+)
+"error.ml" 18 363 365 "error.ml" 18 363 372
+type(
+  Format.formatter ->
+  (string -> int -> int -> int -> unit, Format.formatter, unit) format ->
+  string -> int -> int -> int -> unit
+)
+ident(
+  ext_ref Format.fprintf
+)
+"error.ml" 18 363 373 "error.ml" 18 363 376
+type(
+  Format.formatter
+)
+ident(
+  int_ref fmt "error.ml" 11 135 150 "error.ml" 11 135 153
+)
+"error.ml" 18 363 377 "error.ml" 18 363 426
+type(
+  (string -> int -> int -> int -> unit, Format.formatter, unit) format
+)
+"error.ml" 18 363 427 "error.ml" 18 363 431
+type(
+  string
+)
+ident(
+  int_ref file "error.ml" 11 135 154 "error.ml" 11 135 158
+)
+"error.ml" 18 363 432 "error.ml" 18 363 433
+type(
+  int
+)
+ident(
+  int_ref l "error.ml" 15 257 263 "error.ml" 15 257 264
+)
+"error.ml" 18 363 434 "error.ml" 18 363 436
+type(
+  int
+)
+ident(
+  int_ref fc "error.ml" 16 281 287 "error.ml" 16 281 289
+)
+"error.ml" 18 363 437 "error.ml" 18 363 439
+type(
+  int
+)
+ident(
+  int_ref lc "error.ml" 17 322 328 "error.ml" 17 322 330
+)
+"error.ml" 18 363 365 "error.ml" 18 363 439
+call(
+  tail
+)
+type(
+  unit
+)
+"error.ml" 17 322 324 "error.ml" 18 363 439
+type(
+  unit
+)
+"error.ml" 16 281 283 "error.ml" 18 363 439
+type(
+  unit
+)
+"error.ml" 15 257 259 "error.ml" 18 363 439
+type(
+  unit
+)
+"error.ml" 12 167 169 "error.ml" 18 363 439
+type(
+  unit
+)
+"error.ml" 20 441 445 "error.ml" 20 441 454
+type(
+  error -> string
+)
+ident(
+  def to_string "error.ml" 25 575 575 "error.ml" 1 0 -1
+)
+"error.ml" 20 441 455 "error.ml" 20 441 456
+type(
+  error
+)
+ident(
+  def e "error.ml" 21 459 461 "error.ml" 23 529 573
+)
+"error.ml" 21 459 467 "error.ml" 21 459 468
+type(
+  error
+)
+ident(
+  int_ref e "error.ml" 20 441 455 "error.ml" 20 441 456
+)
+"error.ml" 22 474 494 "error.ml" 22 474 495
+type(
+  string
+)
+ident(
+  def s "error.ml" 22 474 499 "error.ml" 22 474 528
+)
+"error.ml" 22 474 480 "error.ml" 22 474 495
+type(
+  error
+)
+"error.ml" 22 474 499 "error.ml" 22 474 506
+type(
+  (string -> string, unit, string) format -> string -> string
+)
+ident(
+  ext_ref Format.sprintf
+)
+"error.ml" 22 474 507 "error.ml" 22 474 526
+type(
+  (string -> string, unit, string) format
+)
+"error.ml" 22 474 527 "error.ml" 22 474 528
+type(
+  string
+)
+ident(
+  int_ref s "error.ml" 22 474 494 "error.ml" 22 474 495
+)
+"error.ml" 22 474 499 "error.ml" 22 474 528
+call(
+  tail
+)
+type(
+  string
+)
+"error.ml" 23 529 535 "error.ml" 23 529 547
+type(
+  error
+)
+"error.ml" 23 529 551 "error.ml" 23 529 558
+type(
+  (string, unit, string) format -> string
+)
+ident(
+  ext_ref Format.sprintf
+)
+"error.ml" 23 529 559 "error.ml" 23 529 573
+type(
+  (string, unit, string) format
+)
+"error.ml" 23 529 551 "error.ml" 23 529 573
+call(
+  tail
+)
+type(
+  string
+)
+"error.ml" 21 459 461 "error.ml" 23 529 573
+type(
+  string
+)
+"error.ml" 25 575 579 "error.ml" 25 575 584
+type(
+  Format.formatter ->
+  string -> error -> Lexing.position * Lexing.position -> unit
+)
+ident(
+  def print "error.ml" 29 657 657 "error.ml" 1 0 -1
+)
+"error.ml" 25 575 585 "error.ml" 25 575 588
+type(
+  Format.formatter
+)
+ident(
+  def fmt "error.ml" 25 575 589 "error.ml" 27 619 655
+)
+"error.ml" 25 575 589 "error.ml" 25 575 590
+type(
+  string
+)
+ident(
+  def f "error.ml" 25 575 591 "error.ml" 27 619 655
+)
+"error.ml" 25 575 591 "error.ml" 25 575 592
+type(
+  error
+)
+ident(
+  def e "error.ml" 25 575 593 "error.ml" 27 619 655
+)
+"error.ml" 25 575 593 "error.ml" 25 575 594
+type(
+  Lexing.position * Lexing.position
+)
+ident(
+  def p "error.ml" 26 597 599 "error.ml" 27 619 655
+)
+"error.ml" 26 597 599 "error.ml" 26 597 609
+type(
+  Format.formatter -> string -> Lexing.position * Lexing.position -> unit
+)
+ident(
+  int_ref report_loc "error.ml" 11 135 139 "error.ml" 11 135 149
+)
+"error.ml" 26 597 610 "error.ml" 26 597 613
+type(
+  Format.formatter
+)
+ident(
+  int_ref fmt "error.ml" 25 575 585 "error.ml" 25 575 588
+)
+"error.ml" 26 597 614 "error.ml" 26 597 615
+type(
+  string
+)
+ident(
+  int_ref f "error.ml" 25 575 589 "error.ml" 25 575 590
+)
+"error.ml" 26 597 616 "error.ml" 26 597 617
+type(
+  Lexing.position * Lexing.position
+)
+ident(
+  int_ref p "error.ml" 25 575 593 "error.ml" 25 575 594
+)
+"error.ml" 26 597 599 "error.ml" 26 597 617
+call(
+  stack
+)
+type(
+  unit
+)
+"error.ml" 27 619 621 "error.ml" 27 619 628
+type(
+  Format.formatter ->
+  (string -> unit, Format.formatter, unit) format -> string -> unit
+)
+ident(
+  ext_ref Format.fprintf
+)
+"error.ml" 27 619 629 "error.ml" 27 619 632
+type(
+  Format.formatter
+)
+ident(
+  int_ref fmt "error.ml" 25 575 585 "error.ml" 25 575 588
+)
+"error.ml" 27 619 633 "error.ml" 27 619 641
+type(
+  (string -> unit, Format.formatter, unit) format
+)
+"error.ml" 27 619 643 "error.ml" 27 619 652
+type(
+  error -> string
+)
+ident(
+  int_ref to_string "error.ml" 20 441 445 "error.ml" 20 441 454
+)
+"error.ml" 27 619 653 "error.ml" 27 619 654
+type(
+  error
+)
+ident(
+  int_ref e "error.ml" 25 575 591 "error.ml" 25 575 592
+)
+"error.ml" 27 619 642 "error.ml" 27 619 655
+call(
+  stack
+)
+type(
+  string
+)
+"error.ml" 27 619 621 "error.ml" 27 619 655
+call(
+  tail
+)
+type(
+  unit
+)
+"error.ml" 26 597 599 "error.ml" 27 619 655
+type(
+  unit
+)
+"error.ml" 29 657 661 "error.ml" 29 657 666
+type(
+  error -> Ast.position -> 'a
+)
+ident(
+  def error "error.ml" 29 657 692 "error.ml" 1 0 -1
+)
+"error.ml" 29 657 667 "error.ml" 29 657 668
+type(
+  error
+)
+ident(
+  def e "error.ml" 29 657 669 "error.ml" 29 657 692
+)
+"error.ml" 29 657 669 "error.ml" 29 657 670
+type(
+  Ast.position
+)
+ident(
+  def p "error.ml" 29 657 673 "error.ml" 29 657 692
+)
+"error.ml" 29 657 673 "error.ml" 29 657 678
+type(
+  exn -> 'a
+)
+ident(
+  ext_ref Pervasives.raise
+)
+"error.ml" 29 657 687 "error.ml" 29 657 688
+type(
+  error
+)
+ident(
+  int_ref e "error.ml" 29 657 667 "error.ml" 29 657 668
+)
+"error.ml" 29 657 689 "error.ml" 29 657 690
+type(
+  Ast.position
+)
+ident(
+  int_ref p "error.ml" 29 657 669 "error.ml" 29 657 670
+)
+"error.ml" 29 657 679 "error.ml" 29 657 692
+type(
+  exn
+)
+"error.ml" 29 657 673 "error.ml" 29 657 692
+type(
+  'a
+)

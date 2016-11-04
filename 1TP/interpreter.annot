@@ -1,0 +1,263 @@
+"interpreter.ml" 3 10 18 "interpreter.ml" 3 10 32
+type(
+  Ast.expr -> int
+)
+ident(
+  def interpret_expr "interpreter.ml" 3 10 10 "interpreter.ml" 1 0 -1
+)
+"interpreter.ml" 3 10 34 "interpreter.ml" 3 10 35
+type(
+  Ast.expr
+)
+ident(
+  def e "interpreter.ml" 3 10 48 "interpreter.ml" 13 286 309
+)
+"interpreter.ml" 4 56 64 "interpreter.ml" 4 56 65
+type(
+  Ast.expr
+)
+ident(
+  int_ref e "interpreter.ml" 3 10 34 "interpreter.ml" 3 10 35
+)
+"interpreter.ml" 5 71 80 "interpreter.ml" 5 71 81
+ident(
+  def x "interpreter.ml" 5 71 86 "interpreter.ml" 5 71 87
+)
+"interpreter.ml" 5 71 79 "interpreter.ml" 5 71 82
+type(
+  int
+)
+"interpreter.ml" 5 71 75 "interpreter.ml" 5 71 82
+type(
+  Ast.expr
+)
+"interpreter.ml" 5 71 86 "interpreter.ml" 5 71 87
+type(
+  int
+)
+ident(
+  int_ref x "interpreter.ml" 5 71 79 "interpreter.ml" 5 71 82
+)
+"interpreter.ml" 6 88 99 "interpreter.ml" 6 88 101
+type(
+  Ast.binop
+)
+ident(
+  def op "interpreter.ml" 7 117 123 "interpreter.ml" 13 286 309
+)
+"interpreter.ml" 6 88 103 "interpreter.ml" 6 88 106
+type(
+  Ast.expr
+)
+ident(
+  def bob "interpreter.ml" 7 117 123 "interpreter.ml" 13 286 309
+)
+"interpreter.ml" 6 88 108 "interpreter.ml" 6 88 112
+type(
+  Ast.expr
+)
+ident(
+  def john "interpreter.ml" 7 117 123 "interpreter.ml" 13 286 309
+)
+"interpreter.ml" 6 88 92 "interpreter.ml" 6 88 113
+type(
+  Ast.expr
+)
+"interpreter.ml" 7 117 127 "interpreter.ml" 7 117 129
+type(
+  int
+)
+ident(
+  def v1 "interpreter.ml" 8 155 161 "interpreter.ml" 13 286 309
+)
+"interpreter.ml" 7 117 132 "interpreter.ml" 7 117 146
+type(
+  Ast.expr -> int
+)
+ident(
+  int_ref interpret_expr "interpreter.ml" 3 10 18 "interpreter.ml" 3 10 32
+)
+"interpreter.ml" 7 117 146 "interpreter.ml" 7 117 151
+type(
+  Ast.expr
+)
+ident(
+  int_ref bob "interpreter.ml" 6 88 103 "interpreter.ml" 6 88 106
+)
+"interpreter.ml" 7 117 132 "interpreter.ml" 7 117 151
+call(
+  stack
+)
+type(
+  int
+)
+"interpreter.ml" 8 155 165 "interpreter.ml" 8 155 167
+type(
+  int
+)
+ident(
+  def v2 "interpreter.ml" 9 194 200 "interpreter.ml" 13 286 309
+)
+"interpreter.ml" 8 155 170 "interpreter.ml" 8 155 184
+type(
+  Ast.expr -> int
+)
+ident(
+  int_ref interpret_expr "interpreter.ml" 3 10 18 "interpreter.ml" 3 10 32
+)
+"interpreter.ml" 8 155 184 "interpreter.ml" 8 155 190
+type(
+  Ast.expr
+)
+ident(
+  int_ref john "interpreter.ml" 6 88 108 "interpreter.ml" 6 88 112
+)
+"interpreter.ml" 8 155 170 "interpreter.ml" 8 155 190
+call(
+  stack
+)
+type(
+  int
+)
+"interpreter.ml" 9 194 206 "interpreter.ml" 9 194 208
+type(
+  Ast.binop
+)
+ident(
+  int_ref op "interpreter.ml" 6 88 99 "interpreter.ml" 6 88 101
+)
+"interpreter.ml" 10 214 222 "interpreter.ml" 10 214 227
+type(
+  Ast.binop
+)
+"interpreter.ml" 10 214 231 "interpreter.ml" 10 214 233
+type(
+  int
+)
+ident(
+  int_ref v1 "interpreter.ml" 7 117 127 "interpreter.ml" 7 117 129
+)
+"interpreter.ml" 10 214 234 "interpreter.ml" 10 214 235
+type(
+  int -> int -> int
+)
+ident(
+  ext_ref Pervasives.( - )
+)
+"interpreter.ml" 10 214 236 "interpreter.ml" 10 214 238
+type(
+  int
+)
+ident(
+  int_ref v2 "interpreter.ml" 8 155 165 "interpreter.ml" 8 155 167
+)
+"interpreter.ml" 10 214 231 "interpreter.ml" 10 214 238
+type(
+  int
+)
+"interpreter.ml" 11 239 247 "interpreter.ml" 11 239 251
+type(
+  Ast.binop
+)
+"interpreter.ml" 11 239 255 "interpreter.ml" 11 239 257
+type(
+  int
+)
+ident(
+  int_ref v1 "interpreter.ml" 7 117 127 "interpreter.ml" 7 117 129
+)
+"interpreter.ml" 11 239 258 "interpreter.ml" 11 239 259
+type(
+  int -> int -> int
+)
+ident(
+  ext_ref Pervasives.( + )
+)
+"interpreter.ml" 11 239 260 "interpreter.ml" 11 239 262
+type(
+  int
+)
+ident(
+  int_ref v2 "interpreter.ml" 8 155 165 "interpreter.ml" 8 155 167
+)
+"interpreter.ml" 11 239 255 "interpreter.ml" 11 239 262
+type(
+  int
+)
+"interpreter.ml" 12 263 271 "interpreter.ml" 12 263 274
+type(
+  Ast.binop
+)
+"interpreter.ml" 12 263 278 "interpreter.ml" 12 263 280
+type(
+  int
+)
+ident(
+  int_ref v1 "interpreter.ml" 7 117 127 "interpreter.ml" 7 117 129
+)
+"interpreter.ml" 12 263 281 "interpreter.ml" 12 263 282
+type(
+  int -> int -> int
+)
+ident(
+  ext_ref Pervasives.( / )
+)
+"interpreter.ml" 12 263 283 "interpreter.ml" 12 263 285
+type(
+  int
+)
+ident(
+  int_ref v2 "interpreter.ml" 8 155 165 "interpreter.ml" 8 155 167
+)
+"interpreter.ml" 12 263 278 "interpreter.ml" 12 263 285
+type(
+  int
+)
+"interpreter.ml" 13 286 294 "interpreter.ml" 13 286 298
+type(
+  Ast.binop
+)
+"interpreter.ml" 13 286 302 "interpreter.ml" 13 286 304
+type(
+  int
+)
+ident(
+  int_ref v1 "interpreter.ml" 7 117 127 "interpreter.ml" 7 117 129
+)
+"interpreter.ml" 13 286 305 "interpreter.ml" 13 286 306
+type(
+  int -> int -> int
+)
+ident(
+  ext_ref Pervasives.( * )
+)
+"interpreter.ml" 13 286 307 "interpreter.ml" 13 286 309
+type(
+  int
+)
+ident(
+  int_ref v2 "interpreter.ml" 8 155 165 "interpreter.ml" 8 155 167
+)
+"interpreter.ml" 13 286 302 "interpreter.ml" 13 286 309
+type(
+  int
+)
+"interpreter.ml" 9 194 200 "interpreter.ml" 13 286 309
+type(
+  int
+)
+"interpreter.ml" 8 155 161 "interpreter.ml" 13 286 309
+type(
+  int
+)
+"interpreter.ml" 7 117 123 "interpreter.ml" 13 286 309
+type(
+  int
+)
+"interpreter.ml" 4 56 58 "interpreter.ml" 13 286 309
+type(
+  int
+)
+type(
+  int
+)
