@@ -105,7 +105,7 @@ let rec generate_expr (e : Astv.expr) : unit =
     | Ecall c ->
       generate_call c
 
-and generate_call : Astv.call -> unit =
+and generate_call : e (*Astv.call -> unit *)=
   (* On a besoin ici du code correspondant aux actions de l'appelant. *)
   failwith "Not implemented"
 

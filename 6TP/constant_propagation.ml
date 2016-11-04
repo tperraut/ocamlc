@@ -145,7 +145,8 @@ and strip_call defs (f, args) = f, List.map (strip_e defs) args
    des variables locales d'une fonction, cette première version n'optimise
    que le corps du programme. *)
 let propagate_constants prog =
-  let a_prog = init_block prog.instrs in
+  prog (* remove this to propagate constants. uncomment this > *)
+  (* let a_prog = init_block prog.instrs in
   let _ = propagate_block prog.svars Venv.empty a_prog in
   let result = strip_b a_prog in
-  { instrs = result; svars = prog.svars; funs = prog.funs }
+  { instrs = result; svars = prog.svars; funs = prog.funs } *)
