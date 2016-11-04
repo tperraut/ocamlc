@@ -1,2 +1,2 @@
 # ocamlc
-An Ocaml compileur
+Ocaml compileur
