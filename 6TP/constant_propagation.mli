@@ -40,6 +40,6 @@ val strip_a : annot_instr -> Astv.instr
 val strip_b : annot_instr list -> Astv.instr list
 val strip_i : def_env -> a_instr -> Astv.instr
 val strip_e : def_env -> Astv.expr -> Astv.expr
-val strip_call : def_env -> 'a * Astv.expr list -> 'a * Astv.expr list
+val strip_call : def_env -> Astv.call -> Astv.call
   
 val propagate_constants : Astv.prog -> Astv.prog
