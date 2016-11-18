@@ -123,8 +123,8 @@ let rec resolve_instr (env: var_env) (fenv: fun_env) (nxt_local: int) :
       and is2, vset2, fset2, _ = resolve_block env fenv nxt_local is2
       in
       Some (Astv.Iif(c, is1, is2)),
-      Vset.union vset1 vset2, env,
-      Funset.union fset1 fset2, fenv, nxt_local
+      Vset.union vset1 vset2, 
+      Funset.union fset1 fset2, env, fenv, nxt_local
 
       | Iprint e ->
           Some (Astv.Iprint (resolve_expr env fenv e)), Vset.empty,
