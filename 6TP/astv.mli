@@ -1,10 +1,11 @@
 open Astcommon
 
 type var = Static_var of int * Ast.ident
-	   | Param    of int * Ast.ident
-	   | Local_var of int * Ast.ident
+       | Param    of int * Ast.ident
+       | Local_var of int * Ast.ident
+
 type fname = Function   of int * Ast.ident
-    
+
 type expr =
   | Econst  of const
   | Evar    of var
@@ -31,7 +32,7 @@ and  instr =
   | Iexit
 
 type fun_descr = { name: fname; body: block; nb_locals: int }
-      
+
 type prog = { instrs: instr list;
-	      svars: var list;
-	      funs: fun_descr list; }
+          svars: var list;
+          funs: fun_descr list; }
