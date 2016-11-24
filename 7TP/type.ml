@@ -38,13 +38,13 @@ let rec type_expr = function
      mk_texpr (Ebinop(op, e1, e2)) ty
 
   | Astv.Evar v ->
-     let nv = 
+     let (v, nt ) = 
        match v with
-       | Astv.Static_var (id, ident, ty) -> Evar (  id, ident, ty
-       | Astv.Param (id, ident, ty) -> id, ident, ty
-       | Astv.Local_var (id, ident, ty) -> id, ident, ty
+       | Astv.Static_var (id, ident, ty) -> Evar ( Astv.Static_var (id, ident, ty)), ty
+       | Astv.Param (id, ident, ty) -> Evar ( Astv.Param (id, ident, ty)), ty
+       | Astv.Local_var (id, ident, ty) -> Evar ( Astv.Local_var (id, ident, ty)), ty
      in
-     mk_texpr () ty
+     mk_texpr v nt
 
   | Astv.Eif (op, e1, e2) ->
      let op = type_expr op in
@@ -52,10 +52,21 @@ let rec type_expr = function
      let e2 = type_expr e2 in
      check_types Tbool op.ty;
      check_types e1.ty e2.ty;
-     mk_texpr (Eif(op, e1, e2)) e1.ty
-    
-  | _ -> failwith "Not implemented"
-      
+     mk_texpr ( Eif(op, e1, e2)) e1.ty
+
+  | Astv.Enewarr (ty, e) ->
+     let e = type_expr e in
+     check_types Tint e.ty;
+     mk_texpr ( Enewarr(ty,e)) ty
+
+  | Astv.Egetarr (e1, e2) ->
+     let e1 = type_expr e1 in
+     let e2 = type_expr e2 in
+     check_types Tint e2.ty;
+     mk_texpr ( Egetarr(e1,e2)) e1.ty
+
+  | Astv.Ecall (f, params) ->
+     type_call (f, params)      
       
 and type_call (f, params) =
   failwith "Not implemented"
