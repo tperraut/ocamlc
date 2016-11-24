@@ -5,6 +5,7 @@ let mk_texpr e t = { expr=e; ty=t }
 
 let rec check_types ty1 ty2 = match ty1, ty2 with
   | Tint, Tint -> ()
+  | Tbool, Tbool -> ()
   (* Certains des autres cas sont à autoriser,
      d'autres doivent lever une exception. *)
   | _, _       -> failwith "Not implemented"
@@ -25,6 +26,34 @@ let rec type_expr = function
     in
     mk_texpr (Eunop(op, e)) ty
 
+  | Astv.Ebinop (op, e1, e2) ->
+     let e1 = type_expr e1 in
+     let e2 = type_expr e2 in
+     let ty = match op with
+       | Plus | Minus | Mult | Div
+       | Lt   | Le  | Gt | Ge      -> check_types Tint e1.ty;  check_types Tint e2.ty;  Tint;
+       | And  | Or                 -> check_types Tbool e1.ty; check_types Tbool e2.ty; Tbool;
+       | Eq   | Neq                -> check_types e1.ty e2.ty; Tbool;
+     in
+     mk_texpr (Ebinop(op, e1, e2)) ty
+
+  | Astv.Evar v ->
+     let nv = 
+       match v with
+       | Astv.Static_var (id, ident, ty) -> Evar (  id, ident, ty
+       | Astv.Param (id, ident, ty) -> id, ident, ty
+       | Astv.Local_var (id, ident, ty) -> id, ident, ty
+     in
+     mk_texpr () ty
+
+  | Astv.Eif (op, e1, e2) ->
+     let op = type_expr op in
+     let e1 = type_expr e1 in
+     let e2 = type_expr e2 in
+     check_types Tbool op.ty;
+     check_types e1.ty e2.ty;
+     mk_texpr (Eif(op, e1, e2)) e1.ty
+    
   | _ -> failwith "Not implemented"
       
       
