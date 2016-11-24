@@ -63,7 +63,7 @@ let add_param (e: var_env) (params: ident list) : var_env * int =
   let nb = ref (-1) in
   let rec rap (e: var_env) : ident list -> var_env =
     function
-      | [] -> e
+    | [] -> e
     | id::s -> incr nb; rap (Env.add id (Astv.Param (!nb, id)) e) s
   in
   (rap e params), !nb
@@ -75,7 +75,7 @@ let rec resolve_instr (env: var_env) (fenv: fun_env) (nxt_local: int) :
           let var, nxt_local =
             if nxt_local < 0 then new_svar id, nxt_local
             else Astv.Local_var (nxt_local, id), nxt_local + 1
-  in
+    in
           None, Vset.singleton var, Funset.empty, Env.add id var env, fenv,
           nxt_local
 
@@ -143,13 +143,13 @@ let rec resolve_instr (env: var_env) (fenv: fun_env) (nxt_local: int) :
       | Iexit ->
           Some Astv.Iexit, Vset.empty, Funset.empty, env, fenv, nxt_local
 
-        and resolve_block (env: var_env) (fenv: fun_env) (nxt_local: int) :
-          Ast.instr list -> Astv.block * var_set * fun_set * int =
-            function
-              | [] -> [], Vset.empty, Funset.empty, nxt_local
-    | i::is ->
-        let i, vs1, fs1, env, fenv, nxt_local =
-          resolve_instr env fenv nxt_local i
+and resolve_block (env: var_env) (fenv: fun_env) (nxt_local: int) :
+   Ast.instr list -> Astv.block * var_set * fun_set * int =
+   function
+   | [] -> [], Vset.empty, Funset.empty, nxt_local
+   | i::is ->
+       let i, vs1, fs1, env, fenv, nxt_local =
+         resolve_instr env fenv nxt_local i
           in
         let is, vs2, fs2, nxt_local = resolve_block env fenv nxt_local is in
         let is =
