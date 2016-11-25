@@ -64,13 +64,13 @@ let rec type_expr = function
      let e2 = type_expr e2 in
      check_types Tint e2.ty;
      mk_texpr ( Egetarr(e1,e2)) e1.ty
-
-  | Astv.Ecall (f, params) ->
+  | _ -> failwith "Not implemented"
+  (*| Astv.Ecall (f, params) ->
      let params = List.map (type_expr) params in
-     mk_texpr (Ecall (f, params))      
+     mk_texpr (Ecall (f, params))   *)   
       
 and type_call (f, params) =
-  
+  failwith "Not implemented"
   
 (* [ret] est le type éventuel attendu lors d'une instruction [return]. *)
 let rec type_block ret b =
@@ -83,14 +83,49 @@ and type_instr ret = function
     Iblock b
 
   | Astv.Iwhile (e, b) ->
-    let e = type_expr  e
-    and b = type_block ret b
-    in
-    check_types Tbool e.ty;
-    Iwhile (e, b)
+     let e = type_expr  e in
+     check_types Tbool e.ty;
+     let b = type_block ret b in
+     Iwhile (e, b)
 
   | Astv.Inewline -> Inewline
+                   
+  | Astv.Iassign (v, e) ->
+     let vt = 
+       match v with
+       | Astv.Static_var (_, _, ty) ->  ty
+       | Astv.Param (_, _, ty) -> ty
+       | Astv.Local_var (_, _, ty) -> ty
+    and e = type_expr e in
+    check_types vt e.ty;
+    Iassign (v, e)
 
+  | Astv.Isetarr (e1,e2,e3) ->
+     let e1 = type_expr e1 in
+     let e3 = type_expr e3 in
+     check_types e1.ty e3.ty;
+     let e2 = type_expr e2 in
+     check_types Tint e2.ty;
+     Isetarr (e1, e2, e3)
+
+  | Astv.Iif (e, b1, b2) ->
+     let e = type_expr e in
+     check_types Tbool e.ty;
+     let b1 = type_block ret b1 in
+     let b2 = type_block ret b2 in (* Todo type of block *)
+     Iif (e, b1, b2)
+
+  | Astv.Iprint (e) ->
+     let e = type_expr e in
+     check_types Tint e.ty;
+     Ireturn (e)
+
+  | Astv.Ireturn (e) ->
+     let e = type_expr e in
+     Ireturn (e)
+
+  | Astv.Icall (c)
+     
   | _ -> failwith "Not implemented"
       
 
