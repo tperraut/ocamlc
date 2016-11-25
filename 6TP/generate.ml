@@ -1,7 +1,7 @@
 open Astcommon
 open Astv
 open Printf
-  
+
 let push: int -> unit =
   printf "  sub $sp, $sp, 4\n  sw $a%d, 0($sp)\n"
 
@@ -21,18 +21,19 @@ let get_label : Astv.var -> string = function
 
 let get_fun_label : Astv.fname -> string = function
   | Astv.Function (n, id) -> sprintf "__fun__%05i__%s" n id
-    
+
 let rec generate_expr (e : Astv.expr) : unit = 
   match e with
-      
+
     | Econst (Cint i)  -> printf "  li $a0, %d\n" i
     | Econst (Cbool b) -> printf "  li $a0, %d\n" (if b then 1 else 0)
 
     | Evar var ->
-      begin match var with
-	| Static_var _ -> printf "  la $a0, %s\n  lw $a0, 0($a0)\n" (get_label var)
-	| Param (n, _) -> failwith "Not implemented"
-	| Local_var (n, _)  -> failwith "Not implemented"
+      begin
+        match var with
+        | Static_var _ -> printf "  la $a0, %s\n  lw $a0, 0($a0)\n" (get_label var)
+        | Param (n, _) -> printf "  la $a0, %d($fp)\n" (4 * (n + 2))
+        | Local_var (n, _)  -> printf "  la $a0, %d($fp)\n" (-4 * (n + 2))
       end
 
     | Eunop (Uminus, e) ->
@@ -41,38 +42,40 @@ let rec generate_expr (e : Astv.expr) : unit =
     | Eunop (Not, e) ->
       generate_expr e;
       printf "  li $a1, 1\n  sub $a0, $a1, $a0\n"
-      
+
     | Ebinop ((Plus | Mult) as op, Econst (Cint i), e)
     | Ebinop ((Plus | Mult | Minus | Div) as op, e, Econst (Cint i))
-	when -32768 <= i && i < 32768 ->
+    when -32768 <= i && i < 32768 ->
       generate_expr e;
-      let op = match op with
-	| Plus -> "add"
-	| Mult -> "mul"
-	| Minus -> "sub"
-	| Div  -> "div"
-	| _    -> assert false
+      let op =
+        match op with
+        | Plus -> "add"
+        | Mult -> "mul"
+        | Minus -> "sub"
+        | Div  -> "div"
+        | _    -> assert false
       in
       printf "  %s $a0, $a0, %d\n" op i
-	
+
     | Ebinop (op, e1, e2) ->
       generate_expr e1;
       push 0;
       generate_expr e2;
       pop 1;
-      let op = match op with
-	| Plus -> "add"
-	| Mult -> "mul"
-	| Minus -> "sub"
-	| Div  -> "div"
-	| Eq   -> "seq"
-	| Neq  -> "sne"
-	| Lt   -> "slt"
-	| Le   -> "sle"
-	| Gt   -> "sgt"
-	| Ge   -> "sge"
-	| And  -> "and"
-	| Or   -> "or"
+      let op =
+        match op with
+        | Plus -> "add"
+        | Mult -> "mul"
+        | Minus -> "sub"
+        | Div  -> "div"
+        | Eq   -> "seq"
+        | Neq  -> "sne"
+        | Lt   -> "slt"
+        | Le   -> "sle"
+        | Gt   -> "sgt"
+        | Ge   -> "sge"
+        | And  -> "and"
+        | Or   -> "or"
       in
       printf "  %s $a0, $a1, $a0\n" op
 
@@ -116,11 +119,11 @@ let rec generate_instr : instr -> unit = function
     generate_expr e;
     begin match var with
       | Static_var _ ->
-	printf "  la $a1, %s\n  sw $a0, 0($a1)\n" (get_label var)
+          printf "  la $a1, %s\n  sw $a0, 0($a1)\n" (get_label var)
       | Local_var (n, id) -> failwith "Not implemented"
       | Param _ -> failwith "Not  implemented"
     end
-      
+
   | Isetarr (a, i, e) ->
     generate_expr a;
     push 0;
@@ -132,9 +135,9 @@ let rec generate_instr : instr -> unit = function
     pop 2;
     printf "  add $a1, $a2, $a1\n";
     printf "  sw  $a0, 0($a1)\n"
-	
+
   | Iblock b      -> generate_block b
-    
+
   | Iwhile (c, b) ->
     let cond_label = new_label()
     and end_label  = new_label()
@@ -170,11 +173,11 @@ let rec generate_instr : instr -> unit = function
     (* Calcul de l'expression, puis appel système d'affichage. *)
     generate_expr e;
     printf "  li $v0, 1\n  syscall\n"
-      
+
   | Inewline ->
     (* Appel système pour l'affichage du caractère '\n' *)
     printf "  li $v0, 11\n  li $a0, 10\n  syscall\n"
-      
+
   | Iexit ->
     (* Appel système de fin du programme. *)
     printf "  li $v0, 10\n  syscall\n"
