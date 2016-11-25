@@ -66,10 +66,11 @@ let rec type_expr = function
      mk_texpr ( Egetarr(e1,e2)) e1.ty
 
   | Astv.Ecall (f, params) ->
-     type_call (f, params)      
+     let params = List.map (type_expr) params in
+     mk_texpr (Ecall (f, params))      
       
 and type_call (f, params) =
-  failwith "Not implemented"
+  
   
 (* [ret] est le type éventuel attendu lors d'une instruction [return]. *)
 let rec type_block ret b =
