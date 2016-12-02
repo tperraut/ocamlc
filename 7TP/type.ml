@@ -3,6 +3,11 @@ open Astt
 
 let mk_texpr e t = { expr=e; ty=t }
 
+let rec splitpair l acc =
+  match l with
+  | [] -> acc
+  | e::s -> splitpair s (e.ty::acc)
+                 
 let rec check_types ty1 ty2 = match ty1, ty2 with
   | Tint, Tint -> ()
   | Tbool, Tbool -> ()
@@ -57,17 +62,25 @@ let rec type_expr = function
   | Astv.Enewarr (ty, e) ->
      let e = type_expr e in
      check_types Tint e.ty;
-     mk_texpr ( Enewarr(ty,e)) ty
+     mk_texpr ( Enewarr(ty,e)) ty  (* todo array ty *)
 
   | Astv.Egetarr (e1, e2) ->
      let e1 = type_expr e1 in
      let e2 = type_expr e2 in
      check_types Tint e2.ty;
      mk_texpr ( Egetarr(e1,e2)) e1.ty
+  
+  | Astv.Ecall (f, params) ->
+     let typedparams = List.map type_expr params in
+     let ff = let Astv.Function(_, _, fty) = f in
+       fty
+     in
+     let ftypeofparams = ff.params_ty in
+     let typeofparams = splitpair typedparams [] in
+     List.iter2 check_types ftypeofparams typeofparams;
+     mk_texpr (Ecall (f, typedparams)) (BatOption.get ff.return_ty) (* ask for option *)
   | _ -> failwith "Not implemented"
-  (*| Astv.Ecall (f, params) ->
-     let params = List.map (type_expr) params in
-     mk_texpr (Ecall (f, params))   *)   
+
       
 and type_call (f, params) =
   failwith "Not implemented"
