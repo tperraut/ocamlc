@@ -62,7 +62,7 @@ let rec type_expr = function
   | Astv.Enewarr (ty, e) ->
      let e = type_expr e in
      check_types Tint e.ty;
-     mk_texpr ( Enewarr(ty,e)) ty  (* todo array ty *)
+     mk_texpr ( Enewarr(ty,e)) (Tarr (ty))
 
   | Astv.Egetarr (e1, e2) ->
      let e1 = type_expr e1 in
@@ -75,11 +75,15 @@ let rec type_expr = function
      let ff = let Astv.Function(_, _, fty) = f in
        fty
      in
+     let fret =
+       match ff.return_ty with
+       | Some ty -> ty
+       | None -> failwith "Not implemented"
+     in
      let ftypeofparams = ff.params_ty in
      let typeofparams = splitpair typedparams [] in
      List.iter2 check_types ftypeofparams typeofparams;
-     mk_texpr (Ecall (f, typedparams)) (BatOption.get ff.return_ty) (* ask for option *)
-  | _ -> failwith "Not implemented"
+     mk_texpr (Ecall (f, typedparams)) fret (* ask for option *)
 
       
 and type_call (f, params) =
@@ -113,7 +117,7 @@ and type_instr ret = function
     check_types vt e.ty;
     Iassign (v, e)
 
-  | Astv.Isetarr (e1,e2,e3) ->
+  | Astv.Isetarr (e1,e2,e3) -> (*Todo change to Arr type *)
      let e1 = type_expr e1 in
      let e3 = type_expr e3 in
      check_types e1.ty e3.ty;
@@ -137,7 +141,7 @@ and type_instr ret = function
      let e = type_expr e in
      Ireturn (e)
 
-  | Astv.Icall (c)
+  (*| Astv.Icall (c)*)
      
   | _ -> failwith "Not implemented"
       
