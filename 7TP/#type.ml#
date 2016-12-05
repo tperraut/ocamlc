@@ -146,14 +146,17 @@ and type_instr ret = function
      let ff = let Astv.Function(_, _, fty) = f in
               fty
      in
+     let fret =
+       match ff.return_ty with
+       | Some _ -> failwith "Not implemented"
+       | None -> ()
+     in
      let ftypeofparams = ff.params_ty in
      let typeofparams = splitpair typedparams [] in
      List.iter2 check_types ftypeofparams typeofparams;
      Icall (f, typedparams)
 
   | Astv.Iexit -> Iexit
-     
-  (*| _ -> failwith "Not implemented"*)
       
 
 let type_fun_descr fdescr =
