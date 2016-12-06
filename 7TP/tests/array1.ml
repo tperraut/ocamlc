@@ -1,5 +1,5 @@
-var a;
-a := [3];
+var a:int array;
+a := int [3];
 print a[0];
 newline;
 a[0] := 2;

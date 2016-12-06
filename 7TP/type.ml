@@ -13,7 +13,7 @@ let rec check_types ty1 ty2 = match ty1, ty2 with
   | Tbool, Tbool -> ()
   (* Certains des autres cas sont à autoriser,
      d'autres doivent lever une exception. *)
-  | _, _       -> failwith "Not implemented"
+  | _, _       -> failwith "Type error"
   
 let rec type_expr = function
   | Astv.Econst c ->
@@ -117,13 +117,13 @@ and type_instr ret = function
     check_types vt e.ty;
     Iassign (v, e)
 
-  | Astv.Isetarr (e1,e2,e3) -> 
+  | Astv.Isetarr (e1,e2,e) ->  (* TODO fix array type*)
      let e1 = type_expr e1 in
-     let e3 = type_expr e3 in
-     check_types e1.ty e3.ty;
+     let e = type_expr e in
+     check_types e1.ty e.ty;
      let e2 = type_expr e2 in
      check_types Tint e2.ty;
-     Isetarr (e1, e2, e3)
+     Isetarr (e1, e2, e)
 
   | Astv.Iif (e, b1, b2) ->
      let e = type_expr e in
