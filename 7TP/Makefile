@@ -28,7 +28,7 @@ MARS_EXEC = Mars4_5.jar
 
 # Compilateurs
 
-CAMLC = ocamlc -g -annot
+CAMLC = ocamlc -g -annot -bin-annot
 CAMLOPT = ocamlopt
 CAMLDEP = ocamldep
 CAMLLEX = ocamllex
