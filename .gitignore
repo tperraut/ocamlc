@@ -16,3 +16,6 @@ parser.ml
 parser.mli
 compilo
 compilo.opt
+.depend
+*.automaton
+*.asm
