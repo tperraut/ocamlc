@@ -19,3 +19,4 @@ compilo.opt
 .depend
 *.automaton
 *.asm
+*.cmti
