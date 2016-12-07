@@ -1,4 +1,4 @@
-var a;
+var a:int;
   while false begin
     a := a + 1;
   end
