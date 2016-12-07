@@ -1,7 +1,7 @@
-fun f(x) begin
-  var y;
+fun f(x:int):int begin
+  var y:int;
   y := x + x;
-  var z;
+  var z:int;
   z := y * 3;
   return z;
 end

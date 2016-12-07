@@ -1,4 +1,4 @@
-var x;
+var x:int;
 x := 1;
 
 fun incr () begin x := x + 1; end
