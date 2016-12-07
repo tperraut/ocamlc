@@ -4,7 +4,7 @@
 # exclude patterns (uncomment them if you want to use them):
 # *.[oa]
 # *~
-*.cm[iox]
+*.cm[ioxt]
 *~
 .*~
 *.o
@@ -16,3 +16,7 @@ parser.ml
 parser.mli
 compilo
 compilo.opt
+.depend
+*.automaton
+*.asm
+*.cmti

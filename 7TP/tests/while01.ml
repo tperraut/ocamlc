@@ -1,7 +1,7 @@
-var x;
+var x:int;
 x := 42;
 while x != 0 begin
-  var y;
+  var y:int;
   y := x / 2;
   print (x - 2 * y);
   x := y;

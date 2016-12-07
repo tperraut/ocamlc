@@ -31,9 +31,9 @@ let () =
     else ();
     if !compile
     then Generate.generate_prog
-      (Constant_folding.fold_constants
-	(Constant_propagation.propagate_constants
-	   (Resolve_var.resolve_prog p)));
+      (*(Constant_folding.fold_constants
+	(Constant_propagation.propagate_constants*)
+	   (Resolve_var.resolve_prog p)(*))*);
     exit 0
   with
       e ->

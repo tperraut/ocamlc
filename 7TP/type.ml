@@ -78,7 +78,7 @@ let rec type_expr = function
      let fret =
        match ff.return_ty with
        | Some ty -> ty
-       | None -> failwith "Not implemented"
+       | None -> failwith "function have type Unit()"
      in
      let ftypeofparams = ff.params_ty in
      let typeofparams = splitpair typedparams [] in

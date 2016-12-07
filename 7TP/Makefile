@@ -28,7 +28,7 @@ MARS_EXEC = Mars4_5.jar
 
 # Compilateurs
 
-CAMLC = ocamlc -g -annot
+CAMLC = ocamlc -g -annot -bin-annot
 CAMLOPT = ocamlopt
 CAMLDEP = ocamldep
 CAMLLEX = ocamllex
@@ -114,7 +114,7 @@ parser.ml parser.mli: astcommon.cmi ast.cmi
 	./$(EXEC) $<
 
 clean:
-	rm -f *.cm[iox] *~ .*~ *.o *.annot *.conflicts *.output
+	rm -f *.cm[iox] *~ .*~ *.o *.annot *.conflicts *.output *.cmt *.cmti
 	rm -f $(SRC_MLL:.mll=.ml) $(SRC_MLY:.mly=.ml) $(SRC_MLY:.mly=.mli)
 	rm -f $(TEST_ASM_ALL)
 	rm -f $(EXEC)
