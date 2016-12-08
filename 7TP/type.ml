@@ -11,6 +11,7 @@ let rec splitpair l acc =
 let rec check_types ty1 ty2 = match ty1, ty2 with
   | Tint, Tint -> ()
   | Tbool, Tbool -> ()
+  | Tarr ty1, Tarr ty2 -> check_types ty1 ty2
   (* Certains des autres cas sont à autoriser,
      d'autres doivent lever une exception. *)
   | _, _       -> failwith "Type error"
@@ -35,8 +36,8 @@ let rec type_expr = function
      let e1 = type_expr e1 in
      let e2 = type_expr e2 in
      let ty = match op with
-       | Plus | Minus | Mult | Div
-       | Lt   | Le  | Gt | Ge      -> check_types Tint e1.ty;  check_types Tint e2.ty;  Tint;
+       | Plus | Minus | Mult | Div -> check_types Tint e1.ty;  check_types Tint e2.ty;  Tint;
+       | Lt   | Le  | Gt | Ge      -> check_types Tint e1.ty;  check_types Tint e2.ty;  Tbool;
        | And  | Or                 -> check_types Tbool e1.ty; check_types Tbool e2.ty; Tbool;
        | Eq   | Neq                -> check_types e1.ty e2.ty; Tbool;
      in
@@ -62,13 +63,23 @@ let rec type_expr = function
   | Astv.Enewarr (ty, e) ->
      let e = type_expr e in
      check_types Tint e.ty;
-     mk_texpr ( Enewarr(ty,e)) (Tarr (ty))
+     let arrty =
+     match ty with
+      | Tarr _ -> failwith "Array of array? to hard"
+      | ty -> ty;
+      in
+     mk_texpr ( Enewarr(ty,e)) (Tarr (arrty))
 
   | Astv.Egetarr (e1, e2) ->
      let e1 = type_expr e1 in
+     let arrty = 
+       match e1.ty with
+        | Tarr ty -> ty
+        | _ -> failwith "Variable is not array"
+     in
      let e2 = type_expr e2 in
      check_types Tint e2.ty;
-     mk_texpr ( Egetarr(e1,e2)) e1.ty
+     mk_texpr ( Egetarr(e1,e2)) arrty
   
   | Astv.Ecall (f, params) ->
      let typedparams = List.map type_expr params in
@@ -119,8 +130,13 @@ and type_instr ret = function
 
   | Astv.Isetarr (e1,e2,e) ->  (* TODO fix array type*)
      let e1 = type_expr e1 in
+     let ty = 
+       match e1.ty with 
+        | Tarr ty -> ty
+        | _ -> failwith "Variable is not array"
+     in
      let e = type_expr e in
-     check_types e1.ty e.ty;
+     check_types ty e.ty;
      let e2 = type_expr e2 in
      check_types Tint e2.ty;
      Isetarr (e1, e2, e)
